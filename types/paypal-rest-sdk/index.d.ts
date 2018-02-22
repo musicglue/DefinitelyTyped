@@ -205,6 +205,11 @@ export interface Payer {
     payment_method: string;
 }
 
+export interface RedirectUrls {
+    return_url?: string;
+    cancel_url?: string;
+}
+
 export interface Payment {
     readonly id?: string;
     intent: string;
@@ -213,10 +218,7 @@ export interface Payment {
     readonly state?: string;
     experience_profile_id?: string;
     note_to_payer?: string;
-    redirect_urls?: {
-        return_url?: string;
-        cancel_url?: string;
-    };
+    redirect_urls?: RedirectUrls;
     readonly failure_reason?: string;
     readonly create_time?: string;
     readonly update_time?: string;
