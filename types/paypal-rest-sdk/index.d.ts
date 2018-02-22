@@ -148,6 +148,10 @@ export interface ItemList {
     shipping_phone_number?: string;
 }
 
+export interface PaymentOptions {
+    allowed_payment_method: string;
+}
+
 export interface Transaction {
     reference_id?: string;
     amount: Amount;
@@ -159,9 +163,7 @@ export interface Transaction {
     invoice_number?: string;
     purchase_order?: string;
     soft_descriptor?: string;
-    payment_options?: {
-        allowed_payment_method: string;
-    };
+    payment_options?: PaymentOptions;
     notify_url?: string;
     order_url?: string;
     readonly related_resources?: RelatedResources;
