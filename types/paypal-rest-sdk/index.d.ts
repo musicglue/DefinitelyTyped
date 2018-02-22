@@ -175,10 +175,30 @@ export interface Payee {
     };
 }
 
+// https://developer.paypal.com/docs/api/payments/#definition-payer_info
+export interface PayerInfo {
+    billing_address?: Address;
+    birth_date?: string;
+    country_code?: string;
+    email?: string;
+    first_name?: string;
+    last_name?: string;
+    middle_name?: string;
+    payer_id?: string;
+    phone?: string;
+    phone_type?: string;
+    salutation?: string;
+    shipping_address?: Address;
+    suffix?: string;
+    tax_id?: string;
+    tax_id_type?: string;
+}
+
 export interface Payment {
     readonly id?: string;
     intent: string;
     payer: {
+        payer_info?: PayerInfo;
         payment_method: string;
     };
     transactions: [ Transaction ];
