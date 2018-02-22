@@ -141,16 +141,18 @@ export interface Link {
     rel: string;
 }
 
+export interface ItemList {
+    items: Item[];
+    shipping_address?: Address;
+    shipping_method?: string;
+    shipping_phone_number?: string;
+}
+
 export interface Transaction {
     reference_id?: string;
     amount: Amount;
     description?: string;
-    item_list?: {
-        items: Item[];
-        shipping_address?: Address;
-        shipping_method?: string;
-        shipping_phone_number?: string;
-    };
+    item_list?: ItemList;
     payee?: Payee;
     note_to_payee?: string;
     custom?: string;
