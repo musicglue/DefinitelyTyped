@@ -6,7 +6,7 @@
 
 /// <reference types="node" />
 
-import http = require('http');
+import http = require("http");
 
 export function configure(opts: ConfigureOptions): string;
 
@@ -101,7 +101,7 @@ export interface Amount {
         shipping?: string;
         tax?: string;
         handling_fee?: string;
-        shipping_discout?: string;
+        shipping_discount?: string;
         insurance?: string;
         gift_wrap?: string;
     };
@@ -201,7 +201,7 @@ export interface Payment {
         payer_info?: PayerInfo;
         payment_method: string;
     };
-    transactions: [ Transaction ];
+    transactions: [Transaction];
     readonly state?: string;
     experience_profile_id?: string;
     note_to_payer?: string;
@@ -315,25 +315,33 @@ export namespace payment {
     function create(
         data: Payment,
         config: http.RequestOptions | CallbackFunction<PaymentResponse>,
-        cb?: CallbackFunction<PaymentResponse>): void;
+        cb?: CallbackFunction<PaymentResponse>
+    ): void;
     function execute(
         id: string,
         data: ExecuteRequest,
         config: http.RequestOptions | CallbackFunction<PaymentResponse>,
-        cb?: CallbackFunction<PaymentResponse>): void;
+        cb?: CallbackFunction<PaymentResponse>
+    ): void;
     function get(
         id: string,
         config: http.RequestOptions | CallbackFunction<PaymentResponse>,
-        cb?: CallbackFunction<PaymentResponse>): void;
+        cb?: CallbackFunction<PaymentResponse>
+    ): void;
     function list(
-        data: QueryParameters | http.RequestOptions | CallbackFunction<ListResponse>,
+        data:
+            | QueryParameters
+            | http.RequestOptions
+            | CallbackFunction<ListResponse>,
         config?: http.RequestOptions | CallbackFunction<ListResponse>,
-        cb?: CallbackFunction<ListResponse>): void;
+        cb?: CallbackFunction<ListResponse>
+    ): void;
     function update(
         id: string,
         data: UpdateRequest[],
         config?: http.RequestOptions | CallbackFunction<PaymentResponse>,
-        cb?: CallbackFunction<PaymentResponse>): void;
+        cb?: CallbackFunction<PaymentResponse>
+    ): void;
 }
 export namespace notification {
     interface NotificationEventType {
@@ -355,30 +363,41 @@ export namespace notification {
             readonly webhooks: Webhook[];
         }
         function list(
-            data: QueryParameters | http.RequestOptions | CallbackFunction<WebhookListResponse>,
-            config?: http.RequestOptions | CallbackFunction<WebhookListResponse>,
-            cb?: CallbackFunction<WebhookListResponse>): void;
+            data:
+                | QueryParameters
+                | http.RequestOptions
+                | CallbackFunction<WebhookListResponse>,
+            config?:
+                | http.RequestOptions
+                | CallbackFunction<WebhookListResponse>,
+            cb?: CallbackFunction<WebhookListResponse>
+        ): void;
         function create(
             data: Webhook,
             config: http.RequestOptions | CallbackFunction<Webhook>,
-            cb?: CallbackFunction<Webhook>): void;
+            cb?: CallbackFunction<Webhook>
+        ): void;
         function replace(
             id: string,
             data: UpdateRequest[],
             config: http.RequestOptions | CallbackFunction<Webhook>,
-            cb?: CallbackFunction<Webhook>): void;
+            cb?: CallbackFunction<Webhook>
+        ): void;
         function del(
             id: string,
             config: http.RequestOptions | CallbackFunction<Webhook>,
-            cb?: CallbackFunction<Webhook>): void;
+            cb?: CallbackFunction<Webhook>
+        ): void;
         function get(
             id: string,
             config: http.RequestOptions | CallbackFunction<Webhook>,
-            cb?: CallbackFunction<Webhook>): void;
+            cb?: CallbackFunction<Webhook>
+        ): void;
         function eventTypes(
             id: string,
             config: http.RequestOptions | CallbackFunction<EventTypesResponse>,
-            cb?: CallbackFunction<EventTypesResponse>): void;
+            cb?: CallbackFunction<EventTypesResponse>
+        ): void;
     }
     namespace webhookEvent {
         interface WebhookEvent {
@@ -399,29 +418,43 @@ export namespace notification {
         function get(
             id: string,
             config: http.RequestOptions | CallbackFunction<WebhookEvent>,
-            cb?: CallbackFunction<WebhookEvent>): void;
+            cb?: CallbackFunction<WebhookEvent>
+        ): void;
         function getAndVerify(
             body: WebhookEvent,
-            cb: CallbackFunction<WebhookEvent>): void;
+            cb: CallbackFunction<WebhookEvent>
+        ): void;
         function list(
-            data: QueryParameters | http.RequestOptions | CallbackFunction<WebhookEventListResponse>,
-            config?: http.RequestOptions | CallbackFunction<WebhookEventListResponse>,
-            cb?: CallbackFunction<WebhookEventListResponse>): void;
+            data:
+                | QueryParameters
+                | http.RequestOptions
+                | CallbackFunction<WebhookEventListResponse>,
+            config?:
+                | http.RequestOptions
+                | CallbackFunction<WebhookEventListResponse>,
+            cb?: CallbackFunction<WebhookEventListResponse>
+        ): void;
         function resend(
             id: string,
             config: http.RequestOptions | CallbackFunction<WebhookEvent>,
-            cb?: CallbackFunction<WebhookEvent>): void;
+            cb?: CallbackFunction<WebhookEvent>
+        ): void;
         function verify(
             headers: any,
             body: WebhookEvent,
             id: string,
-            cb: CallbackFunction<WebhookVerifyResponse>): void;
+            cb: CallbackFunction<WebhookVerifyResponse>
+        ): void;
     }
     namespace webhookEventType {
         function list(
-            data: QueryParameters | http.RequestOptions | CallbackFunction<EventTypesResponse>,
+            data:
+                | QueryParameters
+                | http.RequestOptions
+                | CallbackFunction<EventTypesResponse>,
             config?: http.RequestOptions | CallbackFunction<EventTypesResponse>,
-            cb?: CallbackFunction<EventTypesResponse>): void;
+            cb?: CallbackFunction<EventTypesResponse>
+        ): void;
     }
 }
 
@@ -434,16 +467,26 @@ export namespace authorization {
     function get(
         id: string,
         config: http.RequestOptions | CallbackFunction<AuthorizationResource>,
-        cb?: CallbackFunction<AuthorizationResource>): void;
+        cb?: CallbackFunction<AuthorizationResource>
+    ): void;
     function capture(
         id: string,
-        data: CaptureRequest | http.RequestOptions | CallbackFunction<CaptureResource>,
+        data:
+            | CaptureRequest
+            | http.RequestOptions
+            | CallbackFunction<CaptureResource>,
         config?: http.RequestOptions | CallbackFunction<CaptureResource>,
-        cb?: CallbackFunction<CaptureResource>): void;
+        cb?: CallbackFunction<CaptureResource>
+    ): void;
     function reauthorize(
-        id: string, data: Amount | http.RequestOptions | CallbackFunction<AuthorizationResource>,
+        id: string,
+        data:
+            | Amount
+            | http.RequestOptions
+            | CallbackFunction<AuthorizationResource>,
         config?: http.RequestOptions | CallbackFunction<AuthorizationResource>,
-        cb?: CallbackFunction<AuthorizationResource>): void;
+        cb?: CallbackFunction<AuthorizationResource>
+    ): void;
     // TODO: Not sure how to type a function named void....
     // function void(data?: any, config?: http.RequestOptions, cb?: CallbackFunction<EventTypesResponse>): void;
 }
@@ -451,12 +494,17 @@ export namespace capture {
     function get(
         id: string,
         config: http.RequestOptions | CallbackFunction<CaptureResource>,
-        cb?: CallbackFunction<CaptureResource>): void;
+        cb?: CallbackFunction<CaptureResource>
+    ): void;
     function refund(
         id: string,
-        data: RefundRequest | http.RequestOptions | CallbackFunction<RefundResource>,
+        data:
+            | RefundRequest
+            | http.RequestOptions
+            | CallbackFunction<RefundResource>,
         config?: http.RequestOptions | CallbackFunction<RefundResource>,
-        cb?: CallbackFunction<RefundResource>): void;
+        cb?: CallbackFunction<RefundResource>
+    ): void;
 }
 export namespace invoice {
     interface EmailRequest {
@@ -645,88 +693,112 @@ export namespace invoice {
     function cancel(
         id: string,
         data: EmailRequest | http.RequestOptions | CallbackFunction<null>,
-        config?: http.RequestOptions | CallbackFunction<null> ,
-        cb?: CallbackFunction<null>): void;
+        config?: http.RequestOptions | CallbackFunction<null>,
+        cb?: CallbackFunction<null>
+    ): void;
     function create(
         data: Invoice,
         config: http.RequestOptions | CallbackFunction<InvoiceResponse>,
-        cb?: CallbackFunction<InvoiceResponse>): void;
+        cb?: CallbackFunction<InvoiceResponse>
+    ): void;
     function del(
         id: string,
         config: http.RequestOptions | CallbackFunction<InvoiceResponse>,
-        cb?: CallbackFunction<null>): void;
+        cb?: CallbackFunction<null>
+    ): void;
     function deleteExternalPayment(
         id: string,
         trxid: string,
         config: http.RequestOptions | CallbackFunction<null>,
-        cb?: CallbackFunction<null>): void;
+        cb?: CallbackFunction<null>
+    ): void;
     function deleteExternalRefund(
         id: string,
         trxid: string,
         config: http.RequestOptions | CallbackFunction<null>,
-        cb?: CallbackFunction<null>): void;
+        cb?: CallbackFunction<null>
+    ): void;
     function generateNumber(
         config: http.RequestOptions | CallbackFunction<NumberResponse>,
-        cb?: CallbackFunction<NumberResponse>): void;
+        cb?: CallbackFunction<NumberResponse>
+    ): void;
     function get(
         id: string,
         config: http.RequestOptions | CallbackFunction<InvoiceResponse>,
-        cb?: CallbackFunction<InvoiceResponse>): void;
+        cb?: CallbackFunction<InvoiceResponse>
+    ): void;
     function list(
-        data: QueryParameters | http.RequestOptions | CallbackFunction<ListResponse>,
+        data:
+            | QueryParameters
+            | http.RequestOptions
+            | CallbackFunction<ListResponse>,
         config?: http.RequestOptions | CallbackFunction<ListResponse>,
-        cb?: CallbackFunction<ListResponse>): void;
+        cb?: CallbackFunction<ListResponse>
+    ): void;
     function qrCode(
         id: string,
         height: number,
         width: number,
         config: http.RequestOptions | CallbackFunction<QrResponse>,
-        cb?: CallbackFunction<QrResponse>): void;
+        cb?: CallbackFunction<QrResponse>
+    ): void;
     function recordPayment(
         id: string,
         data: PayRequest,
         config: http.RequestOptions | CallbackFunction<null>,
-        cb?: CallbackFunction<null>): void;
+        cb?: CallbackFunction<null>
+    ): void;
     function recordRefund(
         id: string,
         data: RefundRequest,
         config: http.RequestOptions | CallbackFunction<null>,
-        cb?: CallbackFunction<null>): void;
+        cb?: CallbackFunction<null>
+    ): void;
     function remind(
         id: string,
         data: EmailRequest | http.RequestOptions | CallbackFunction<null>,
         config?: http.RequestOptions | CallbackFunction<null>,
-        cb?: CallbackFunction<null>): void;
+        cb?: CallbackFunction<null>
+    ): void;
     function search(
         data: SearchRequest,
         config: http.RequestOptions | CallbackFunction<ListResponse>,
-        cb?: CallbackFunction<ListResponse>): void;
+        cb?: CallbackFunction<ListResponse>
+    ): void;
     function send(
         id: string,
         config: http.RequestOptions | CallbackFunction<ListResponse>,
-        cb?: CallbackFunction<null>): void;
+        cb?: CallbackFunction<null>
+    ): void;
     function update(
         id: string,
         data: Invoice,
         config: http.RequestOptions | CallbackFunction<InvoiceResponse>,
-        cb?: CallbackFunction<InvoiceResponse>): void;
+        cb?: CallbackFunction<InvoiceResponse>
+    ): void;
 }
 export namespace refund {
     function get(
         id: string,
         config: http.RequestOptions | CallbackFunction<RefundResource>,
-        cb?: CallbackFunction<RefundResource>): void;
+        cb?: CallbackFunction<RefundResource>
+    ): void;
 }
 export namespace sale {
     function get(
         id: string,
         config: http.RequestOptions | CallbackFunction<PaymentResponse>,
-        cb?: CallbackFunction<PaymentResponse>): void;
+        cb?: CallbackFunction<PaymentResponse>
+    ): void;
     function refund(
         id: string,
-        data: RefundRequest | http.RequestOptions | CallbackFunction<RefundResource>,
+        data:
+            | RefundRequest
+            | http.RequestOptions
+            | CallbackFunction<RefundResource>,
         config?: http.RequestOptions | CallbackFunction<RefundResource>,
-        cb?: CallbackFunction<RefundResource>): void;
+        cb?: CallbackFunction<RefundResource>
+    ): void;
 }
 // TODO: Strong Typing stops here
 export namespace billingAgreement {
@@ -736,7 +808,13 @@ export namespace billingAgreement {
     function execute(id: string, data: any, config?: any, cb?: any): void;
     function get(id: string, config: any, cb?: any): void;
     function reactivate(id: string, data: any, config?: any, cb?: any): void;
-    function searchTransactions(id: string, start_date: any, end_date?: any, config?: any, cb?: any): void;
+    function searchTransactions(
+        id: string,
+        start_date: any,
+        end_date?: any,
+        config?: any,
+        cb?: any
+    ): void;
     function setBalance(id: string, data: any, config?: any, cb?: any): void;
     function suspend(id: string, data: any, config?: any, cb?: any): void;
     function update(id: string, data: any, config?: any, cb?: any): void;
