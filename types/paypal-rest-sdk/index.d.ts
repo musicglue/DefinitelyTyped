@@ -181,7 +181,6 @@ export interface Payee {
     };
 }
 
-// https://developer.paypal.com/docs/api/payments/#definition-payer_info
 export interface PayerInfo {
     billing_address?: Address;
     birth_date?: string;
