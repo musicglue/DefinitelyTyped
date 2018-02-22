@@ -93,18 +93,20 @@ export interface UpdateRequest {
     value: any;
 }
 
+export interface AmountDetails {
+    subtotal?: string;
+    shipping?: string;
+    tax?: string;
+    handling_fee?: string;
+    shipping_discount?: string;
+    insurance?: string;
+    gift_wrap?: string;
+}
+
 export interface Amount {
     currency: string;
     total: string;
-    details?: {
-        subtotal?: string;
-        shipping?: string;
-        tax?: string;
-        handling_fee?: string;
-        shipping_discount?: string;
-        insurance?: string;
-        gift_wrap?: string;
-    };
+    details?: AmountDetails;
 }
 export interface ErrorDetails {
     readonly field: string;
