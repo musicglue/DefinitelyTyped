@@ -200,7 +200,24 @@ export interface PayerInfo {
     tax_id_type?: string;
 }
 
+export interface CreditCard {
+    billing_address: Address;
+    cvv2?: string;
+    expire_month: number;
+    expire_year: number;
+    first_name?: string;
+    last_name?: string;
+    links?: Link[];
+    number: string;
+    type: string;
+}
+
+export interface FundingInstrument {
+    credit_card: CreditCard;
+}
+
 export interface Payer {
+    funding_instruments?: [FundingInstrument];
     payer_info?: PayerInfo;
     payment_method: string;
 }
