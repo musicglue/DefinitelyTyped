@@ -200,13 +200,15 @@ export interface PayerInfo {
     tax_id_type?: string;
 }
 
+export interface Payer {
+    payer_info?: PayerInfo;
+    payment_method: string;
+}
+
 export interface Payment {
     readonly id?: string;
     intent: string;
-    payer: {
-        payer_info?: PayerInfo;
-        payment_method: string;
-    };
+    payer: Payer;
     transactions: [Transaction];
     readonly state?: string;
     experience_profile_id?: string;
